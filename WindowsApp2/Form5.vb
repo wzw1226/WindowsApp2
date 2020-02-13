@@ -6,6 +6,7 @@
             picture = My.Computer.Clipboard.GetImage
         End If
         PictureBox1.Image = picture
+        TextBox1.Text = picture.GetHashCode.ToString
     End Sub
 
 End Class
