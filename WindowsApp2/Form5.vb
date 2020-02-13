@@ -1,7 +1,7 @@
 ﻿Public Class Form5
     Dim dt_name As DataTable
 
-    Public Sub set_dt()
+    Public Sub Set_dt()
 
         dt_name = New DataTable()
 
@@ -50,7 +50,9 @@
         If My.Computer.Clipboard.ContainsImage() Then
             picture = My.Computer.Clipboard.GetImage
         End If
+#Disable Warning BC42104 ' 在为变量赋值之前，变量已被使用
         PictureBox1.Image = picture
+#Enable Warning BC42104 ' 在为变量赋值之前，变量已被使用
         TextBox1.Text = picture.GetHashCode.ToString
     End Sub
 

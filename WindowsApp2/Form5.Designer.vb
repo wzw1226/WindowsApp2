@@ -25,7 +25,9 @@ Partial Class Form5
         Me.Button1 = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Button1
@@ -39,30 +41,44 @@ Partial Class Form5
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(224, 209)
+        Me.PictureBox1.Location = New System.Drawing.Point(111, 199)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(275, 160)
+        Me.PictureBox1.Size = New System.Drawing.Size(135, 155)
         Me.PictureBox1.TabIndex = 1
         Me.PictureBox1.TabStop = False
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(109, 60)
+        Me.TextBox1.Location = New System.Drawing.Point(12, 22)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(623, 21)
+        Me.TextBox1.Size = New System.Drawing.Size(496, 21)
         Me.TextBox1.TabIndex = 2
+        '
+        'DataGridView1
+        '
+        Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Right
+        Me.DataGridView1.ImeMode = System.Windows.Forms.ImeMode.Disable
+        Me.DataGridView1.Location = New System.Drawing.Point(755, 0)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.RowTemplate.Height = 23
+        Me.DataGridView1.Size = New System.Drawing.Size(471, 555)
+        Me.DataGridView1.TabIndex = 3
         '
         'Form5
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(1226, 555)
+        Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Button1)
         Me.Name = "Form5"
         Me.Text = "Form5"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -71,4 +87,5 @@ Partial Class Form5
     Friend WithEvents Button1 As Button
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents DataGridView1 As DataGridView
 End Class
