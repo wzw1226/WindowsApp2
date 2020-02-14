@@ -29,8 +29,14 @@ Partial Class Form4
         Me.ToolStripMenuItem退出 = New System.Windows.Forms.ToolStripMenuItem()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.BeginDate = New System.Windows.Forms.DateTimePicker()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.EndDate = New System.Windows.Forms.DateTimePicker()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -76,27 +82,88 @@ Partial Class Form4
         '
         Me.DataGridView1.BackgroundColor = System.Drawing.Color.Ivory
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Right
-        Me.DataGridView1.Location = New System.Drawing.Point(120, 24)
+        Me.DataGridView1.Location = New System.Drawing.Point(120, 264)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowTemplate.Height = 23
-        Me.DataGridView1.Size = New System.Drawing.Size(1319, 576)
+        Me.DataGridView1.Size = New System.Drawing.Size(1319, 336)
         Me.DataGridView1.TabIndex = 36
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(12, 50)
+        Me.Button1.Location = New System.Drawing.Point(12, 244)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 37
         Me.Button1.Text = "Button1"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'Panel3
+        '
+        Me.Panel3.BackColor = System.Drawing.Color.Yellow
+        Me.Panel3.Controls.Add(Me.BeginDate)
+        Me.Panel3.Controls.Add(Me.Label1)
+        Me.Panel3.Controls.Add(Me.Label3)
+        Me.Panel3.Controls.Add(Me.EndDate)
+        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel3.Location = New System.Drawing.Point(0, 24)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(1439, 42)
+        Me.Panel3.TabIndex = 239
+        '
+        'BeginDate
+        '
+        Me.BeginDate.CalendarFont = New System.Drawing.Font("宋体", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.BeginDate.CustomFormat = "yyyyMd"
+        Me.BeginDate.Font = New System.Drawing.Font("宋体", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.BeginDate.Location = New System.Drawing.Point(176, 7)
+        Me.BeginDate.Name = "BeginDate"
+        Me.BeginDate.Size = New System.Drawing.Size(143, 26)
+        Me.BeginDate.TabIndex = 230
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.Font = New System.Drawing.Font("宋体", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label1.ForeColor = System.Drawing.SystemColors.ActiveCaption
+        Me.Label1.Location = New System.Drawing.Point(82, 12)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(96, 16)
+        Me.Label1.TabIndex = 229
+        Me.Label1.Text = "开始日期 >="
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.BackColor = System.Drawing.Color.Transparent
+        Me.Label3.Font = New System.Drawing.Font("宋体", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label3.ForeColor = System.Drawing.SystemColors.ActiveCaption
+        Me.Label3.Location = New System.Drawing.Point(329, 12)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(96, 16)
+        Me.Label3.TabIndex = 228
+        Me.Label3.Text = "结束日期 <="
+        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'EndDate
+        '
+        Me.EndDate.CalendarFont = New System.Drawing.Font("宋体", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.EndDate.CustomFormat = "yyyyMd"
+        Me.EndDate.Font = New System.Drawing.Font("宋体", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.EndDate.Location = New System.Drawing.Point(428, 7)
+        Me.EndDate.Name = "EndDate"
+        Me.EndDate.Size = New System.Drawing.Size(150, 26)
+        Me.EndDate.TabIndex = 231
+        '
         'Form4
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1439, 600)
+        Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.MenuStrip1)
@@ -107,6 +174,8 @@ Partial Class Form4
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel3.ResumeLayout(False)
+        Me.Panel3.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -119,4 +188,9 @@ Partial Class Form4
     Friend WithEvents ToolStripMenuItem退出 As ToolStripMenuItem
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents Button1 As Button
+    Friend WithEvents Panel3 As Panel
+    Friend WithEvents BeginDate As DateTimePicker
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents EndDate As DateTimePicker
 End Class

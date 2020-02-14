@@ -1,5 +1,4 @@
-﻿
-Imports System.Data.SqlClient
+﻿Imports System.Data.SqlClient
 
 Public Class Form4
 
@@ -65,6 +64,7 @@ Public Class Form4
 #End Region
 
 #Region "DataGridView1"
+
     Private Sub DataGridView1_CellFormatting(ByVal sender As Object,
             ByVal e As DataGridViewCellFormattingEventArgs) _
             Handles DataGridView1.CellFormatting
@@ -196,27 +196,36 @@ Public Class Form4
 
     End Sub
 
-
-
 #End Region
+
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         'MessageBox.Show("选择客户末选择，操作取消！！！" + vbCrLf + Configuration.ConfigurationManager.AppSettings("con").ToString)
         'Dim SQLString1 As String = "SELECT   TOP (100) PERCENT 代码, 代码 + ' │' + 姓名 AS A  FROM      dbo.tb业务员  ORDER BY 代码"
         'Dim SqlHelper As New SqlHelper
         'Dim dt1 As DataTable = SqlHelper.ExecSelect(SQLString1, CommandType.Text)
 
+        'Dim SqlHelper As New SqlHelper
+        'Dim paras As SqlParameter() = {}
+        'Dim dt1 As DataTable = SqlHelper.ExecSelect("pr_单价表", CommandType.StoredProcedure, paras)
+
         Dim SqlHelper As New SqlHelper
-        Dim paras As SqlParameter() = {}
-        Dim dt1 As DataTable = SqlHelper.ExecSelect("pr_单价表", CommandType.StoredProcedure, paras)
+        Dim paras As SqlParameter() =
+            {New SqlParameter("@DateStart", BeginDate.Value.ToShortDateString),
+             New SqlParameter("@DateEnd", EndDate.Value.ToShortDateString)
+             }
+
+        Dim dt1 As DataTable = SqlHelper.ExecSelect("pr_期间分客户下单_送货_毛利统计表", CommandType.StoredProcedure, paras)
 
         If dt1.Rows.Count = 0 Then
             MessageBox.Show("无数据可打印！")
             Exit Sub
         End If
+
         DataGridView1.DataSource = dt1
         DataGridViewinfo1()
         MsgBox("导入成功！", MsgBoxStyle.OkOnly, "提示信息")
     End Sub
+
     'Public Function InsertIntoTLogin(ByVal Enlogin As Entity.EnLogin) As Boolean
 
     '    Enlogin.user_computer = System.Environment.MachineName
