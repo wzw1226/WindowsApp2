@@ -1,6 +1,5 @@
 ﻿Imports System.Data.SqlClient
-
-Public Class Form4
+Public Class Fr用户名编辑
 
 #Region "窗口基本程序"
 
@@ -198,86 +197,178 @@ Public Class Form4
 
 #End Region
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        'MessageBox.Show("选择客户末选择，操作取消！！！" + vbCrLf + Configuration.ConfigurationManager.AppSettings("con").ToString)
-        '============================================
-        'Dim SQLString As String = "SELECT   TOP (100) PERCENT 代码, 代码 + ' │' + 姓名 AS A  FROM      dbo.tb业务员  ORDER BY 代码"
-        'Dim SqlHelper As New SqlHelper
-        'Dim dt1 As DataTable = SqlHelper.ExecSelect(SQLString, CommandType.Text)
-        '============================================
+    Private Sub SettextboxNull()
+
+        TextBoxID.Text = ""
+        TextBox真实姓名.Text = ""
+        TextBox用户名.Text = ""
+        TextBox密码.Text = ""
+        TextBox备注.Text = ""
+        RadioButton办公文员.Checked = False
+        RadioButton财务出纳.Checked = False
+        RadioButton财务会计.Checked = False
+        RadioButton产量编辑专职.Checked = False
+        RadioButton开送货单专职.Checked = False
+        RadioButton基础资料专职.Checked = False
+        RadioButton报价合同专职.Checked = False
+        RadioButton系统管理员.Checked = False
+        RadioButton生产销售.Checked = False
+        RadioButton原纸管理专职.Checked = False
+        RadioButton总经理.Checked = False
+    End Sub
+
+    Private Sub ToolStripMenuItem新建_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem新建.Click
+        SettextboxNull()
+        TextBoxID.ReadOnly = True
+        ToolStripMenuItem保存.Enabled = True
+        TextBox真实姓名.Focus()
+    End Sub
+    Dim strPrivilege As String = ""
+    Private Sub ToolStripMenuItem保存_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem保存.Click
+        Try
+            '--------------------------------------------
+            If TextBox用户名.Text = "" Then
+                MsgBox(Label1.Text + " 不能为空！", MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, "提示信息")
+                TextBox用户名.Focus()
+                TextBox用户名.Select()
+                Exit Sub
+            End If
+
+            ''Dim SQLString As String = "SELECT * FROM tbUser WHERE 用户名='" & TextBox用户名.Text.ToString.Trim & "' "
+            ''Dim SqlHelper As New SqlHelper
+            ''Dim dt1 As DataTable = SqlHelper.ExecSelect(SQLString, CommandType.Text)
+            ''If dt1.Rows.Count > 0 Then
+            ''    MsgBox(TextBox用户名.Text.ToString + " 用户名已注册！", MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, "提示信息")
+            ''    TextBox用户名.Focus()
+            ''    Exit Sub
+            ''End If
+            If TextBox密码.Text = "" Then
+                MsgBox(Label2.Text + " 不能为空！", MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, "提示信息")
+                TextBox密码.Focus()
+                Exit Sub
+            End If
+            If TextBox真实姓名.Text = "" Then
+                MsgBox("真实姓名 不能为空！", MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, "提示信息")
+                TextBox真实姓名.Focus()
+                Exit Sub
+            End If
+
+            If ComboBox登录有效吗.Text = "" Then
+                MsgBox("登录有效吗 不能为空！", MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, "提示信息")
+                ComboBox登录有效吗.Focus()
+                Exit Sub
+            End If
+
+            strPrivilege = ""
+
+
+            If RadioButton办公文员.Checked Then
+                strPrivilege = "办公文员"
+
+
+            ElseIf RadioButton财务出纳.Checked Then
+                strPrivilege = "财务出纳"
+
+            ElseIf RadioButton财务会计.Checked Then
+                strPrivilege = "财务会计"
+
+            ElseIf RadioButton产量编辑专职.Checked Then
+                strPrivilege = "产量编辑专职"
+
+            ElseIf RadioButton开送货单专职.Checked Then
+
+                strPrivilege = "开送货单专职"
+
+            ElseIf RadioButton基础资料专职.Checked Then
+                strPrivilege = "基础资料专职"
+
+            ElseIf RadioButton报价合同专职.Checked Then
+                strPrivilege = "报价合同专职"
+
+            ElseIf RadioButton系统管理员.Checked Then
+
+                strPrivilege = "系统管理员"
+            ElseIf RadioButton生产销售.Checked Then
+
+                strPrivilege = "生产销售"
+            ElseIf RadioButton原纸管理专职.Checked Then
+                strPrivilege = "原纸管理专职"
+
+            ElseIf RadioButton总经理.Checked Then
+                strPrivilege = "总经理"
+            Else
+                MsgBox("权限设置 不能为空！", MsgBoxStyle.OkOnly Or MsgBoxStyle.Critical, "提示信息")
+                Exit Sub
+            End If
+            '            '---------------------------------------------------------------
+            '[usp_tbUser$insupdet]
+            '	-- Add the parameters for the stored procedure here
+            '    @CMD       NVARCHAR(20),
+            '	@用户名  VARCHAR (20) ,
+            '	@密码  VARCHAR (20) ,
+            '	@真实姓名  NVARCHAR (50) ,
+            '	@登录有效吗  VARCHAR (5) ,
+            '	@权限  NVARCHAR (50) ,
+            '	@备注  NVARCHAR (50)
+
+            Dim SqlHelper1 As New SqlHelper
+            Dim paras1 As SqlParameter() =
+                {New SqlParameter("@CMD", "INSERT"),
+                 New SqlParameter("@用户名", TextBox用户名.Text.Trim.ToString),
+                 New SqlParameter("@密码", Encrypt(TextBox密码.Text.Trim.ToString)),
+                 New SqlParameter("@真实姓名", TextBox真实姓名.Text.Trim.ToString),
+                 New SqlParameter("@登录有效吗", ComboBox登录有效吗.Text.Trim.ToString),
+                 New SqlParameter("@权限", strPrivilege),
+                 New SqlParameter("@备注", TextBox备注.Text.Trim.ToString)
+                 }
+            If SqlHelper1.ExecAddDelUpdate("usp_tbUser$insupdet", CommandType.StoredProcedure, paras1) > 0 Then
+                MsgBox("保存成功！", MsgBoxStyle.OkOnly, "提示信息")
+
+            Else
+                MsgBox("保存失败！", MsgBoxStyle.OkOnly, "提示信息")
+            End If
+
+
+
+
+            'Dim _proceName() As String = {"@CMD", "@用户名", "@密码", "@真实姓名", "@登录有效吗", "@权限", "@手机号码", "@QQ号码", "@备注"}
+            'Dim _dbType() As SqlDbType = {SqlDbType.NVarChar, SqlDbType.VarChar, SqlDbType.VarChar, SqlDbType.NVarChar, SqlDbType.VarChar, SqlDbType.NVarChar, SqlDbType.VarChar, SqlDbType.VarChar, SqlDbType.NVarChar}
+            'Dim _values() As Object = {"INSERT", TextBox用户名.Text.Trim, Encrypt(Trim(TextBox密码.Text)), TextBox真实姓名.Text.Trim, ComboBox登录有效吗.Text.Trim, strPrivilege, TextBox手机号码.Text.Trim, TextBoxQQ号码.Text.Trim, TextBox备注.Text}
+
+            'If (wzwsp.DataAccess.ExecuteNoQuery("usp_tbUser$insupdet", _proceName, _dbType, _values)) = 1 Then
+            '    MsgBox("保存成功！", MsgBoxStyle.OkOnly, "提示信息")
+            '    保存ToolStripButton.Enabled = False
+            '    刷新ToolStripButton.PerformClick()
+
+            'Else
+            '    MsgBox("保存失败！", MsgBoxStyle.OkOnly, "提示信息")
+            'End If
+
+        Catch ex As System.Exception
+            MessageBox.Show(ex.Message)
+        End Try
+
+
+    End Sub
+
+    Private Sub ComboBox登录有效吗_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ComboBox登录有效吗.KeyPress
+        e.KeyChar = ChrW(0)  '禁止用户在其中输入任何的文字
+    End Sub
+
+    Private Sub ToolStripMenuItem刷新_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem刷新.Click
+
         'Dim SqlHelper As New SqlHelper
         'Dim paras As SqlParameter() = {}
-        'Dim dt1 As DataTable = SqlHelper.ExecSelect("pr_单价表", CommandType.StoredProcedure, paras)
-        '============================================
-        Dim SqlHelper As New SqlHelper
-        Dim paras As SqlParameter() =
-            {New SqlParameter("@DateStart", BeginDate.Value.ToShortDateString),
-             New SqlParameter("@DateEnd", EndDate.Value.ToShortDateString)
-             }
-        Dim dt1 As DataTable = SqlHelper.ExecSelect("pr_期间分客户下单_送货_毛利统计表", CommandType.StoredProcedure, paras)
-        '============================================
-        If dt1.Rows.Count = 0 Then
-            MessageBox.Show("无数据可打印！")
-            Exit Sub
-        End If
+        'Dim dt1 As DataTable = SqlHelper.ExecSelect("pr_tbUser", CommandType.StoredProcedure, paras)
+        'MessageBox.Show("选择客户末选择，操作取消！！！" + vbCrLf + dt1.Rows.Count.ToString)
 
+        Dim SQLString As String = " EXEC	 [dbo].[pr_tbUser]" 'SELECT * FROM tbUser 
+
+        Dim SqlHelper As New SqlHelper
+        Dim dt1 As DataTable = SqlHelper.ExecSelect(SQLString, CommandType.Text)
+        MessageBox.Show("选择客户末选择，操作取消！！！" + vbCrLf + dt1.Rows.Count.ToString)
         DataGridView1.DataSource = dt1
         DataGridViewinfo1()
         MsgBox("导入成功！", MsgBoxStyle.OkOnly, "提示信息")
     End Sub
-
-    Private Sub Button保存_Click(sender As Object, e As EventArgs) Handles Button保存.Click
-
-        Dim SqlHelper As New SqlHelper
-        Dim paras As SqlParameter() =
-            {New SqlParameter("@CMD", "INSERT"),
-             New SqlParameter("@编号", ""),
-             New SqlParameter("@机长姓名", TextBox机长姓名.Text.Trim.ToString)
-             }
-        If SqlHelper.ExecAddDelUpdate("usp_tb机长$insupdet", CommandType.StoredProcedure, paras) = 1 Then
-            MsgBox("保存成功！", MsgBoxStyle.OkOnly, "提示信息")
-
-        Else
-            MsgBox("保存失败！", MsgBoxStyle.OkOnly, "提示信息")
-        End If
-
-
-    End Sub
-
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-
-
-        Dim SQLString As String = "UPDATE dbo.tb机长   SET  机长姓名= '" & TextBox机长姓名.Text.Trim.ToString & "'   WHERE 编号= '" & TextBox编号.Text.Trim.ToString & "'"
-        Dim SqlHelper As New SqlHelper
-        If SqlHelper.ExecAddDelUpdate(SQLString, CommandType.Text) > 0 Then
-            MsgBox("UPDATE成功！", MsgBoxStyle.OkOnly, "提示信息")
-
-        Else
-            MsgBox("UPDATE失败！", MsgBoxStyle.OkOnly, "提示信息")
-        End If
-
-
-    End Sub
-
-    'Public Function InsertIntoTLogin(ByVal Enlogin As Entity.EnLogin) As Boolean
-
-    '    Enlogin.user_computer = System.Environment.MachineName
-    '    Enlogin.user_loginDate = DateString
-    '    Enlogin.user_loginTime = TimeOfDay
-
-    '    Dim sql As String = "insert into T_Login(userID,loginDate,loginTime,computer)values(@userID,@loginDate,@loginTime,@computer)"
-    '    Dim paras As SqlParameter() = {New SqlParameter("@userID", Enlogin.user_userID),
-    '                                   New SqlParameter("@loginDate", Enlogin.user_loginDate),
-    '                                   New SqlParameter("@loginTime", Enlogin.user_loginTime),
-    '                                   New SqlParameter("@computer", Enlogin.user_computer)}
-
-    '    Dim sh As SqlHelper = New SqlHelper
-    '    If sh.ExecuteNonQueryCan(sql, CommandType.Text, paras) > 0 Then
-    '        Return True
-    '    Else
-    '        Return False
-    '    End If
-
-    'End Function
-
 End Class

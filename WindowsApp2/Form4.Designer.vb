@@ -34,6 +34,14 @@ Partial Class Form4
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.EndDate = New System.Windows.Forms.DateTimePicker()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label33 = New System.Windows.Forms.Label()
+        Me.TextBox机长姓名 = New System.Windows.Forms.TextBox()
+        Me.Label0 = New System.Windows.Forms.Label()
+        Me.TextBox编号 = New System.Windows.Forms.TextBox()
+        Me.Button保存 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.SuspendLayout()
@@ -85,7 +93,7 @@ Partial Class Form4
         Me.DataGridView1.Location = New System.Drawing.Point(120, 264)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowTemplate.Height = 23
-        Me.DataGridView1.Size = New System.Drawing.Size(1319, 336)
+        Me.DataGridView1.Size = New System.Drawing.Size(371, 336)
         Me.DataGridView1.TabIndex = 36
         '
         'Button1
@@ -158,11 +166,109 @@ Partial Class Form4
         Me.EndDate.Size = New System.Drawing.Size(150, 26)
         Me.EndDate.TabIndex = 231
         '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.BackColor = System.Drawing.Color.Transparent
+        Me.Label9.ForeColor = System.Drawing.Color.Red
+        Me.Label9.Location = New System.Drawing.Point(601, 114)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(176, 16)
+        Me.Label9.TabIndex = 245
+        Me.Label9.Text = "(只显示用，不用输入 )"
+        Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
+        Me.Label2.Font = New System.Drawing.Font("宋体", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.DarkTurquoise
+        Me.Label2.Location = New System.Drawing.Point(418, 150)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(72, 24)
+        Me.Label2.TabIndex = 242
+        Me.Label2.Text = "机长姓名"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Label2.UseCompatibleTextRendering = True
+        '
+        'Label33
+        '
+        Me.Label33.BackColor = System.Drawing.Color.Transparent
+        Me.Label33.Font = New System.Drawing.Font("宋体", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label33.ForeColor = System.Drawing.Color.Red
+        Me.Label33.Location = New System.Drawing.Point(636, 152)
+        Me.Label33.Name = "Label33"
+        Me.Label33.Size = New System.Drawing.Size(10, 19)
+        Me.Label33.TabIndex = 244
+        Me.Label33.Text = "*"
+        Me.Label33.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'TextBox机长姓名
+        '
+        Me.TextBox机长姓名.Font = New System.Drawing.Font("宋体", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.TextBox机长姓名.ImeMode = System.Windows.Forms.ImeMode.Hangul
+        Me.TextBox机长姓名.Location = New System.Drawing.Point(500, 148)
+        Me.TextBox机长姓名.Name = "TextBox机长姓名"
+        Me.TextBox机长姓名.Size = New System.Drawing.Size(130, 26)
+        Me.TextBox机长姓名.TabIndex = 241
+        '
+        'Label0
+        '
+        Me.Label0.AutoSize = True
+        Me.Label0.BackColor = System.Drawing.Color.Transparent
+        Me.Label0.Font = New System.Drawing.Font("宋体", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label0.Location = New System.Drawing.Point(449, 111)
+        Me.Label0.Name = "Label0"
+        Me.Label0.Size = New System.Drawing.Size(42, 16)
+        Me.Label0.TabIndex = 243
+        Me.Label0.Text = "编号"
+        Me.Label0.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'TextBox编号
+        '
+        Me.TextBox编号.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
+        Me.TextBox编号.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TextBox编号.Font = New System.Drawing.Font("宋体", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.TextBox编号.ImeMode = System.Windows.Forms.ImeMode.Disable
+        Me.TextBox编号.Location = New System.Drawing.Point(500, 107)
+        Me.TextBox编号.Name = "TextBox编号"
+        Me.TextBox编号.Size = New System.Drawing.Size(95, 26)
+        Me.TextBox编号.TabIndex = 240
+        '
+        'Button保存
+        '
+        Me.Button保存.AutoSize = True
+        Me.Button保存.BackColor = System.Drawing.Color.Coral
+        Me.Button保存.Location = New System.Drawing.Point(681, 143)
+        Me.Button保存.Name = "Button保存"
+        Me.Button保存.Size = New System.Drawing.Size(75, 39)
+        Me.Button保存.TabIndex = 246
+        Me.Button保存.Text = "保存"
+        Me.Button保存.UseVisualStyleBackColor = False
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(565, 206)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 247
+        Me.Button2.Text = "Button2"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'Form4
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1439, 600)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.Button保存)
+        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Label33)
+        Me.Controls.Add(Me.TextBox机长姓名)
+        Me.Controls.Add(Me.Label0)
+        Me.Controls.Add(Me.TextBox编号)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.DataGridView1)
@@ -193,4 +299,12 @@ Partial Class Form4
     Friend WithEvents Label1 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents EndDate As DateTimePicker
+    Friend WithEvents Label9 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label33 As Label
+    Friend WithEvents TextBox机长姓名 As TextBox
+    Friend WithEvents Label0 As Label
+    Friend WithEvents TextBox编号 As TextBox
+    Friend WithEvents Button保存 As Button
+    Friend WithEvents Button2 As Button
 End Class
