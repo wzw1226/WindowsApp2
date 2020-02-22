@@ -321,9 +321,9 @@ Public Class Fr用户名编辑
                  New SqlParameter("@权限", strPrivilege),
                  New SqlParameter("@备注", TextBox备注.Text.Trim.ToString)
                  }
-            If SqlHelper1.ExecAddDelUpdate("usp_tbUser$insupdet", CommandType.StoredProcedure, paras1) > 0 Then
-                MsgBox("保存成功！", MsgBoxStyle.OkOnly, "提示信息")
 
+            If SqlHelper1.ExecAddDelUpdate("usp_tbUser$insupdet", CommandType.StoredProcedure, paras1) = -1 Then
+                MsgBox("保存成功！", MsgBoxStyle.OkOnly, "提示信息")
             Else
                 MsgBox("保存失败！", MsgBoxStyle.OkOnly, "提示信息")
             End If
@@ -357,16 +357,12 @@ Public Class Fr用户名编辑
 
     Private Sub ToolStripMenuItem刷新_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem刷新.Click
 
-        'Dim SqlHelper As New SqlHelper
-        'Dim paras As SqlParameter() = {}
-        'Dim dt1 As DataTable = SqlHelper.ExecSelect("pr_tbUser", CommandType.StoredProcedure, paras)
-        'MessageBox.Show("选择客户末选择，操作取消！！！" + vbCrLf + dt1.Rows.Count.ToString)
-
-        Dim SQLString As String = " EXEC	 [dbo].[pr_tbUser]" 'SELECT * FROM tbUser 
-
         Dim SqlHelper As New SqlHelper
-        Dim dt1 As DataTable = SqlHelper.ExecSelect(SQLString, CommandType.Text)
+        Dim paras As SqlParameter() = {}
+        Dim dt1 As DataTable = SqlHelper.ExecSelect("pr_tbUser", CommandType.StoredProcedure, paras)
         MessageBox.Show("选择客户末选择，操作取消！！！" + vbCrLf + dt1.Rows.Count.ToString)
+
+        'MessageBox.Show("选择客户末选择，操作取消！！！" + vbCrLf + dt1.Rows.Count.ToString)
         DataGridView1.DataSource = dt1
         DataGridViewinfo1()
         MsgBox("导入成功！", MsgBoxStyle.OkOnly, "提示信息")
