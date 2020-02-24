@@ -27,6 +27,7 @@ Partial Class Form1
         Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.Button2 = New System.Windows.Forms.Button()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -57,11 +58,21 @@ Partial Class Form1
         Me.Chart1.TabIndex = 1
         Me.Chart1.Text = "Chart1"
         '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(585, 233)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(164, 36)
+        Me.Button2.TabIndex = 2
+        Me.Button2.Text = "图表保存"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Chart1)
         Me.Controls.Add(Me.Button1)
         Me.Name = "Form1"
@@ -73,4 +84,5 @@ Partial Class Form1
 
     Friend WithEvents Button1 As Button
     Friend WithEvents Chart1 As DataVisualization.Charting.Chart
+    Friend WithEvents Button2 As Button
 End Class

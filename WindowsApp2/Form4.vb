@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Windows.Forms.DataVisualization.Charting
 
 Public Class Form4
 
@@ -258,6 +259,59 @@ Public Class Form4
         Else
             MsgBox("UPDATE失败！", MsgBoxStyle.OkOnly, "提示信息")
         End If
+
+
+    End Sub
+
+    Private Sub ButtonChart_Click(sender As Object, e As EventArgs) Handles ButtonChart.Click
+
+
+        Dim SqlHelper As New SqlHelper
+        Dim paras As SqlParameter() =
+            {New SqlParameter("@DateStart", BeginDate.Value.ToShortDateString),
+             New SqlParameter("@DateEnd", EndDate.Value.ToShortDateString)
+             }
+        Dim dt1 As DataTable = SqlHelper.ExecSelect("Chart_期间日期_落单金额_送货金额", CommandType.StoredProcedure, paras)
+
+        If dt1.Rows.Count = 0 Then
+            MessageBox.Show("无数据,操作取消！")
+            Exit Sub
+        End If
+        DataGridView1.DataSource = dt1
+        DataGridViewinfo1()
+        MsgBox("导入成功！", MsgBoxStyle.OkOnly, "提示信息")
+
+
+
+
+
+
+        '绘制柱形图
+        'Chart1.ChartAreas.Clear()
+        '设置图表的数据源
+        Chart1.DataSource = dt1
+        '        日期 Date,
+        '落单金额 NUMERIC(16, 2),
+        '送货金额 NUMERIC(16, 2)
+        Chart1.Series.Clear()
+        'Chart1.Series.RemoveAt(0)
+        'Chart1.Series("Series1").Points.Clear() ';//清除之前的图
+        For i As Integer = 1 To dt1.Columns.Count - 1
+            Chart1.Series.Add(dt1.Columns（i).ColumnName.ToString)
+            Chart1.Series(dt1.Columns（i).ColumnName.ToString).XValueType = ChartValueType.Date '//设置X轴绑定值的类型
+            Chart1.Series(dt1.Columns（i).ColumnName.ToString).XValueMember = dt1.Columns（0).ColumnName.ToString
+            Chart1.Series(dt1.Columns（i).ColumnName.ToString).YValueMembers = dt1.Columns（i).ColumnName.ToString
+            Chart1.Series(dt1.Columns（i).ColumnName.ToString).ChartType = SeriesChartType.Line
+        Next
+
+        'Chart1.Series(0).XValueType = ChartValueType.Date '//设置X轴绑定值的类型
+        'Chart1.Series(0).XValueMember = "日期"
+
+        'Chart1.Series(0).YValueMembers = "落单金额"
+        'Chart1.Series(1).YValueMembers = "送货金额"
+        Chart1.DataBind()
+        'Chart1.Series(0).ChartType = SeriesChartType.Column
+        'Chart1.Series(1).ChartType = SeriesChartType.Column
 
 
     End Sub

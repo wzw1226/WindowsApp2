@@ -146,10 +146,12 @@ Public Class Form3
         Chart1.Series.Add(newSeries2)
 
         ' start worker threads.
-        If AddDataRunner.IsAlive = True Then
-            AddDataRunner.Resume()
-        Else
+        If AddDataRunner.IsAlive <> True Then
             AddDataRunner.Start()
+        Else
+#Disable Warning BC40000 ' 类型或成员已过时
+            AddDataRunner.Resume()
+#Enable Warning BC40000 ' 类型或成员已过时
         End If
     End Sub
 

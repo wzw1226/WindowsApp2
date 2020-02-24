@@ -83,6 +83,12 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Fr_Chart.Designer.vb">
+      <DependentUpon>Fr_Chart.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Fr_Chart.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Fr用户名编辑.Designer.vb">
       <DependentUpon>Fr用户名编辑.vb</DependentUpon>
     </Compile>
@@ -136,6 +142,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fr_Chart.resx">
+      <DependentUpon>Fr_Chart.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fr用户名编辑.resx">
       <DependentUpon>Fr用户名编辑.vb</DependentUpon>
